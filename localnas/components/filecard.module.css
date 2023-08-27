@@ -1,0 +1,14 @@
+  .card-text-wrapper{ 
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(225,225,225,.7);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .hide {
+    display: none;
+  }
+  .show {
+    display:block;
+  }

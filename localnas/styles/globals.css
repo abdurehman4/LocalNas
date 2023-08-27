@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Figtree&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Figtree&display=swap');
+
+
+
+*{
+  font-family: 'Figtree', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+
+.page-heading{
+  font-family: --var(--font-comic);
+  font-weight: 700;
+}
+
+.l-bg{
+  background-color: rgb(248, 248, 248);
+}
+/* 
+.flex-row{
+  display: flex;
+  flex-direction: row;
+} */
+
+/* header h1{
+  background: linear-gradient(to right,#0c8339, #cf6b0d);
+-webkit-background-clip: text;
+  background-clip: text;
+-webkit-text-fill-color: transparent;
+} */
+header ul{
+  justify-content: space-around;
+  display: flex;
+  justify-self: flex-end;
+  width: max-content;
+}
+
+
+.w-280{
+  max-width: 280px;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+header {
+  display: flex;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: rgb(224, 225, 230);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 5px;
+  padding: 3px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  /* justify-items: stretch; */
+}
+
+.border-b-1{
+  border-bottom-width: 1px;
+}
+@media screen and (min-width: 400px) {
+  .sm-h-96{
+    height: 48px;
+width: 48px;
+  }
+}
+/* 
+.sm-h-96{
+  @media screen and (min-width: 400px) {
+    height: 48px;
+  width: 48px;
+  }
+} */
+
+.h-54{
+  height: 36px;
+  width: 36px;
+}
+header ul li{
+   list-style:none;
+   /* color: rgb(211, 219, 219); */
+   font-size: 20px;
+   margin-left: 24px;
+   margin-right:28px;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  /* color: #0087ca; */
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  top: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+header ul li:hover{
+  transition-duration: 0.2s;
+  transform-origin: left;
+  /* text-underline-position: left; */
+  /* text-decoration: underline; */
+  color : #00a1f1;
+}

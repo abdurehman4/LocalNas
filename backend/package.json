@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.mjs",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon --ignore 'Arrays/*' server"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "file-type": "^18.5.0",
+    "get-file-type-es5": "^7.4.0",
+    "morgan": "~1.9.1",
+    "read-chunk": "^4.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,1 @@
+export const officeFiles=[["Eid Duties.xlsx","/mnt/Data/Installer & BackUP/Imp Doc/Eid Duties.xlsx","xlsx","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"]]
