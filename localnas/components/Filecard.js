@@ -12,6 +12,8 @@ import compressed from '@/public/Icons/compressed.png'
 import rar from '@/public/Icons/rar.png'
 import zip from '@/public/Icons/zip.png'
 import './filecard.module.css'
+// import { useEffect } from 'react';
+import Link from 'next/link';
 
 
 
@@ -26,9 +28,9 @@ import './filecard.module.css'
 // });
 
 
-const Filecard = ({ name, extension }) => {
+const Filecard = ({ name,path, extension }) => {
   return (
-    <div className='flex flex-col justify-center items-center '>
+    <div className='flex flex-col justify-center items-center ' >
       <div className='break-all truncate md:break-wrap h-28 w-280 md:w-fit md:max-w-fit flex-col max-h-30 flex max-w-xxs py-4 sm:py-6 px-2 sm:px-4 md:px-5 sm:mx-4 md:mx-6 mx-3 sm:my-3 my-2 flex-row justify-center sm:justify-evenly  items-center bg-white border border-gray-200 rounded-2xl hover:rounded-xl drop-shadow-md hover:drop-shadow-lg transition sm:flex-row'>
         <Image
           className='h-9 sm:h-14 w-9 sm:w-14 mr-5'
@@ -59,7 +61,7 @@ const Filecard = ({ name, extension }) => {
           })()}
           alt='doc'
         />
-        <p className='text-l p-2 sm:text-xl font-medium break-all truncate'>{name}</p>
+        <Link href={'http://192.168.10.22:5000/downloads?code=' + path} className='text-l p-2 sm:text-xl font-medium break-all truncate'>{name}</Link>
       </div>
       <div className='flex flex-row w-100'>
 

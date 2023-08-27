@@ -4,6 +4,6 @@ export const image = express.Router();
 
 image.get("/",(req,res)=>{
     const data = JSON.parse(fs.readFileSync('/home/abdurehman/LocalNas/backend/Arrays/imageFiles.json','utf-8'))
-    res.send(data.array)
+    res.json(data)
 }
 )

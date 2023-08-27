@@ -17,8 +17,8 @@ const Data  = ({arrayofGroups})=>{
             <div className='flex flex-column w-full'>
               <div className='flex flex-wrap justify-center m-3 md:m-10 w-full'>
                 {
-                  (Files.array).map(
-                    (file) => <Filecard name={file.at(0)} key={file.at(1)} extension={file.at(2)} />
+                  Files.array.map(
+                    (file) => <Filecard name={file.at(0)} key={file.at(1)} path={file.at(4)} extension={file.at(2)} />
                   )
                 }
               </div>

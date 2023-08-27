@@ -5,6 +5,6 @@ export const book = express.Router();
 
 book.get("/",(req,res)=>{
     const data = JSON.parse(fs.readFileSync('/home/abdurehman/LocalNas/backend/Arrays/bookFiles.json','utf-8'))
-    res.send(data.array)
+    res.json(data)
 }
 )

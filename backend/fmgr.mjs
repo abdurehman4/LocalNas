@@ -43,14 +43,14 @@ async function chaosofFiles() {
 
 
 
-    const filesextensions = await Promise.all(myFiles.map(async (file) => {
+    const filesextensions = await Promise.all(myFiles.map(async (file,i) => {
         const type = await fileTypeFromFile(file);
         const name = file.split('\\').pop().split('/').pop();
         let array = [];
         if (type == undefined) {
-            array = [name, file, "undefined", "undefined"]
+            array = [name, file, "undefined", "undefined",i]
         } else {
-            array = [name, file, type.ext, type.mime];
+            array = [name, file, type.ext, type.mime,i];
         }
         // const files_with_type
         return array;
