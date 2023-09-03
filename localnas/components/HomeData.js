@@ -9,7 +9,7 @@ const HomeData  = ({Files})=>{
               <div className='flex flex-wrap justify-center m-3 md:m-10 w-full'>
                 {
                   (Files.array).map(
-                    (file) => <Filecard name={file.at(0)} key={file.at(1)} extension={file.at(2)} />
+                    (file) => <Filecard name={file.at(0)} path={file.at(4)} key={file.at(1)} extension={file.at(2)} />
                   )
                 }
               </div>

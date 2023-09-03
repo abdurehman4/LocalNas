@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@types/react": "^18.2.21"
+    "@headlessui/react": "^1.7.17",
+    "headlessui": "^0.0.0"
   }
 }
