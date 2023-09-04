@@ -11,7 +11,8 @@ downloader.get("/", function (req, res) {
     const image = JSON.parse(fs.readFileSync('/home/abdurehman/LocalNas/backend/Arrays/imageFiles.json','utf-8')).array
     const zip = JSON.parse(fs.readFileSync('/home/abdurehman/LocalNas/backend/Arrays/zipFiles.json','utf-8')).array
     const compressed = JSON.parse(fs.readFileSync('/home/abdurehman/LocalNas/backend/Arrays/compressedFiles.json','utf-8')).array
-    const all = book.concat(office.concat(video.concat(image.concat(zip.concat(compressed)))))
+    const others = JSON.parse(fs.readFileSync('/home/abdurehman/LocalNas/backend/Arrays/others.json','utf-8')).array
+    const all = book.concat(office.concat(video.concat(image.concat(zip.concat(compressed.concat(others))))))
     var path =  "";
     all.map(
         (array)=>{

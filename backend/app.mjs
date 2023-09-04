@@ -7,6 +7,7 @@ import { image } from './routes/images.mjs';
 import { book } from './routes/book.mjs';
 import { videos } from './routes/videos.mjs';
 import {downloader} from './downloader.mjs';
+import { others } from './routes/others.mjs';
 import cors from 'cors';
 
 
@@ -23,6 +24,7 @@ app.use("/compressedFiles",compressed)
 app.use("/bookFiles",book)
 app.use("/imageFiles",image)
 app.use("/downloads",downloader)
+app.use("/others",others)
 
 
 

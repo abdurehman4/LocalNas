@@ -7,7 +7,7 @@ import * as url from 'url';
 var compressedFiles = [];
 var imageFiles = [];
 var videoFiles = [];
-var undefinedFiles = [];
+var others = [];
 var bookFiles = [];
 var zipFiles = [];
 var officeFiles = [];
@@ -29,19 +29,12 @@ async function chaosofFiles() {
                 arrayOfFiles.push(path.join(dirPath, "/", file))
             }
         })
-        //   console.log(arrayOfFiles)
         return arrayOfFiles
     }
 
 
     const myFiles = [];
     getAllFiles("/mnt/Data", myFiles)
-    // const files_with_type = [];
-    // const type = await fileTypeFromFile(myFiles.at(0))
-    // console.log(type)
-    // // Determing the type of files
-
-
 
     const filesextensions = await Promise.all(myFiles.map(async (file,i) => {
         const type = await fileTypeFromFile(file);
@@ -52,30 +45,22 @@ async function chaosofFiles() {
         } else {
             array = [name, file, type.ext, type.mime,i];
         }
-        // const files_with_type
         return array;
-        // console.log(filesextensions)
 
     })
     )
-    // console.log(files_with_type)
     console.log("This it the final\n")
-    // console.log(filesextensions);
 
     compressedFiles = [];
     imageFiles = [];
     videoFiles = [];
-    undefinedFiles = [];
     bookFiles = [];
     zipFiles = [];
     officeFiles = [];
+    others = [];
     filesextensions.forEach(function (array) {
         const mime = array.at(3);
-        // console.log('Cureent '+{mime})
-        // console.log('Array \n '+{array})
-
         const ext = array.at(2);
-        // console.log('Cureent '+{ext})
         if (ext.includes("zip")) {
             zipFiles.push(array)
         } else if (mime.includes("image")) {
@@ -85,20 +70,19 @@ async function chaosofFiles() {
         } else if (mime.includes("video")) {
             videoFiles.push(array)
         } else if (mime == "undefined") {
-            undefinedFiles.push(array)
+            others.push(array)
         } else if (mime.includes("office")) {
             officeFiles.push(array)
         }
         else if (mime.includes("pdf")) {
             bookFiles.push(array)
+        }else {
+            others.push(array)
         }
 
     }
     )
-    // console.log({zipFiles})
-    //   console.log({compressedFiles})
-    //   console.log({officeFiles})
-    //   console.log({videoFiles})
+
     const arrayGroup = [
         { name: "compressedFiles", array: compressedFiles },
         { name: "imageFiles", array: imageFiles },
@@ -106,10 +90,9 @@ async function chaosofFiles() {
         { name: "zipFiles", array: zipFiles },
         { name: "officeFiles", array: officeFiles },
         { name: "bookFiles", array: bookFiles },
-        { name: "undefinedFiles", array: undefinedFiles }
+        { name: "others", array: others },
     ]
 
-    // console.log("Current dir is ",__dirname)
 
     arrayGroup.forEach(
         function (array) {
@@ -121,14 +104,9 @@ async function chaosofFiles() {
             });
         }
     )
-
-
-
-
 }
 
 chaosofFiles()
-
 
 async function waitUntil() {
     return await new Promise(resolve => {
