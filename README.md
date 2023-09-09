@@ -6,8 +6,8 @@ LocaNAS is a Local Network Attached Storage (NAS) server that allows you to easi
 
 ## ScreenShots
 
-## Desktop:
+### Desktop:
 ![Alt text](/screenshots/LocalNAS-desktop.png?raw=true "LocalNAS-Desktop")
 
-## Mobile:
+### Mobile:
 ![Alt text](/screenshots/LocalNAS-mobile.png?raw=true "LocalNAS-Mobile")
