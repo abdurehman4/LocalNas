@@ -1,0 +1,5 @@
+target
+localnas/node_modules
+backend/node_modules
+.vscode
+localnas/.next

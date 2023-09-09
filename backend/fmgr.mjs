@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import {fileTypeFromFile} from 'file-type';
 import * as path from 'path';
 import * as url from 'url';
-
+// import * as process from 'process'
 
 var compressedFiles = [];
 var imageFiles = [];
@@ -34,7 +34,7 @@ async function chaosofFiles() {
 
 
     const myFiles = [];
-    getAllFiles("/mnt/Data", myFiles)
+    getAllFiles(process.argv.at(2), myFiles)
 
     const filesextensions = await Promise.all(myFiles.map(async (file,i) => {
         const type = await fileTypeFromFile(file);
@@ -49,7 +49,6 @@ async function chaosofFiles() {
 
     })
     )
-    console.log("This it the final\n")
 
     compressedFiles = [];
     imageFiles = [];
@@ -96,7 +95,6 @@ async function chaosofFiles() {
 
     arrayGroup.forEach(
         function (array) {
-            console.log(array)
             fs.writeFile(__dirname + "Arrays/" + array.name + ".json", '{"name":"'+array.name+'",'+'"array":' + JSON.stringify(array.array)+"}", function (err) {
                 if (err) {
                     return console.log(err);
@@ -113,7 +111,8 @@ async function waitUntil() {
         var i = 0;
         const interval = setInterval(() => {
             resolve('foo');
-            chaosofFiles()
+            chaosofFiles();
+            console.log(i)
             i = i + 1;
         }, 10000);
     });

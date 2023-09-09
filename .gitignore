@@ -1,6 +1,4 @@
-header.html
 localnas/.next
-
-# Added by cargo
-
+/.vscode
 /target
+/.server_conf.json
