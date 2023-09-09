@@ -4,3 +4,4 @@ localnas/.next
 /.server_conf.json
 /LocalNAS_release-1.0.0
 /.tokeignore
+/aur
