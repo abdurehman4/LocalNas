@@ -19,7 +19,7 @@ struct Configuration {
 fn backend_api()-> JoinHandle<()>{
     let api_thread = thread::spawn(||{
         let command1 =Command::new("yarn")
-        .args(["--cwd","./backend/","dev"])
+        .args(["--cwd","/usr/share/localnas/backend/","dev"])
         // .arg("")
         .stdout(Stdio::piped())
         .spawn()
@@ -37,7 +37,7 @@ fn backend_api()-> JoinHandle<()>{
 fn website()-> JoinHandle<()>{
     let website_thread = thread::spawn(||{
         let command2 =Command::new("sudo")
-        .args(["yarn","--cwd","./localnas","start"])
+        .args(["yarn","--cwd","/usr/share/localnas/localnas","start"])
         // .arg("")
         .stdout(Stdio::piped())
         .spawn()
@@ -55,7 +55,7 @@ fn website()-> JoinHandle<()>{
 fn fmgr(path: String)-> JoinHandle<()>{
     let fmgr_thread: JoinHandle<()> = thread::spawn(move||{
         let command3 =Command::new("node")
-        .args(["./backend/fmgr.mjs",&path])
+        .args(["/usr/share/localnas/backend/fmgr.mjs",&path])
         // .arg("")
         .stdout(Stdio::piped())
         .spawn()

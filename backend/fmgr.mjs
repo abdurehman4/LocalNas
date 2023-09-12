@@ -19,15 +19,24 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 async function chaosofFiles() {
     const getAllFiles = function (dirPath, arrayOfFiles) {
         const files = fs.readdirSync(dirPath)
+        // console.log(files);
+        // exit();
 
-        arrayOfFiles = arrayOfFiles || []
+
+        // arrayOfFiles = arrayOfFiles || []
 
         files.forEach(function (file) {
-            if (fs.statSync(dirPath + "/" + file).isDirectory()) {
+            // console.log(file.charAt(0))
+            try{
+            if ((fs.statSync(dirPath + "/" + file).isDirectory())&&!(file.charAt(0)==".")) {
+                // console.log("Inside of If statement")
                 arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles)
-            } else {
-                arrayOfFiles.push(path.join(dirPath, "/", file))
-            }
+            
+            } else if (!(file.charAt(0)==".")) {
+                arrayOfFiles.push(path.join(dirPath, "/", file))}
+        }catch(err){
+            // console.log(err)
+        }
         })
         return arrayOfFiles
     }
@@ -114,7 +123,7 @@ async function waitUntil() {
             chaosofFiles();
             console.log(i)
             i = i + 1;
-        }, 10000);
+        }, 60000);
     });
 }
 waitUntil()
