@@ -1,10 +1,9 @@
-import Layout from '../components/Layout'
 import '@styles/globals.css'
-import PageHeading from '@/components/pageHeading'
-import Data from '@/components/DataGroups'
-import getData from '@/app/getData'
+import PageHeading from '@/app/components/pageHeading'
+import Data from '@/app/components/DataGroups'
+import getData from '@/app/components/getData'
 
-export async function getServerSideProps() {
+export default async function Media() {
   const videoFiles =await getData('http://192.168.10.22:5000/videoFiles')
 const imageFiles =await getData('http://192.168.10.22:5000/imageFiles')
  
@@ -12,17 +11,8 @@ const imageFiles =await getData('http://192.168.10.22:5000/imageFiles')
     { name: "Videos", array: videoFiles },
     { name: "Images", array: imageFiles }
   ]
-
-  return {
-    props: {
-      groups
-    }
-  };
-}
-
-export default function Media({groups}) {
-  return <Layout>
+  return <div>
     <PageHeading heading="Media" />
     <Data arrayofGroups={groups}/>
-  </Layout>
+  </div>
 }

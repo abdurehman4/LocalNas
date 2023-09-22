@@ -11,6 +11,7 @@ import word from '@/public/Icons/word.png'
 import compressed from '@/public/Icons/compressed.png'
 import rar from '@/public/Icons/rar.png'
 import zip from '@/public/Icons/zip.png'
+import book from '@/public/Icons/book.png'
 import './filecard.module.css'
 // import { useEffect } from 'react';
 import Link from 'next/link';
@@ -33,31 +34,50 @@ const Filecard = ({ name,path, extension }) => {
     <div className='flex flex-col justify-center items-center ' >
       <div className='break-all truncate md:break-wrap h-28 w-280 md:w-fit md:max-w-fit flex-col max-h-30 flex max-w-xxs py-4 sm:py-6 px-2 sm:px-4 md:px-5 sm:mx-4 md:mx-6 mx-3 sm:my-3 my-2 flex-row justify-center sm:justify-evenly  items-center bg-white border border-gray-200 rounded-2xl hover:rounded-xl drop-shadow-md hover:drop-shadow-lg transition sm:flex-row'>
         <Image
-          className='h-9 sm:h-14 w-9 sm:w-14 mr-5'
+          className='mr-5'
+          width={56}
+          height={56}
           src={(() => {
-            switch (extension) {
+            let file_ext = extension.toLowerCase();
+            // switch () {
               //Office Files
-              case "xls": return excel;
-              case "xlsx": return excel;
-              case "ppt": return powerpoint;
-              case "doc": return word;
-              case "docx": return word;
+              if (file_ext=="xls" ) return excel;
+              if (file_ext=="xlsx")  return excel;
+              if (file_ext=="ppt" ) return powerpoint;
+              if (file_ext=="doc" ) return word;
+              if (file_ext=="docx")  return word;
               //Books
-              case "pdf": return pdf;
+              if (file_ext=="pdf" ) return pdf;
+              if (file_ext=="tpz" ) return book;
+              if (file_ext=="mart")  return book;
+              if (file_ext=="apnx")  return book;
+              if (file_ext=="lrf" ) return book;
+              if (file_ext=="ea") return book;
+              if (file_ext=="tk3") return book;
+              if (file_ext=="jwpub") return book;
+              if (file_ext=="lit" ) return book;
+              if (file_ext=="epub")  return book;
+              if (file_ext=="oeb" ) return book;
               //MultiMedia
-              case "video": return video;
-              case "mkv": return video;
-              case "mp4": return video;
-              case "avi": return video;
-              case "png": return pic;
-              case "jpg": return pic;
-              case "jpeg": return pic;
+              if (file_ext=="video")  return video;
+              if (file_ext=="mkv" ) return video;
+              if (file_ext=="mov" ) return video;
+              if (file_ext=="wmv" ) return video;
+              if (file_ext=="mp4" ) return video;
+              if (file_ext=="avi" ) return video;
+              // Pictures
+              if (file_ext=="png" ) return pic;
+              if (file_ext=="jpg" ) return pic;
+              if (file_ext=="jpeg")  return pic;
+              if (file_ext=="jfif")  return pic;
+              if (file_ext=="pjpeg") return pic;
+              if (file_ext=="pjp" ) return pic;
               // Compressed Files
-              case "zip": return zip;
-              case "rar": return rar;
-              // case "blue":  return "#0000FF";
-              default: return document;
-            }
+              if (file_ext=="zip" ) return zip;
+              if (file_ext=="rar" ) return rar;
+              // if ("blue":)   return "#0000FF";
+              else return document;
+          // }
           })()}
           alt='doc'
         />

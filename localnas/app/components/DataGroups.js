@@ -1,7 +1,11 @@
+'use client'
 import Filecard from "./Filecard";
+import { useState } from "react";
 const Data  = ({arrayofGroups,others=false})=>{
-    const elements = arrayofGroups.map(
+  const elements = arrayofGroups.map(
+       
       function (Files,i,row){
+        const [showMore,setShowMore] = useState(false)
         const Seperater = ()=>{if (i+1 ==row.length){
                 return null
         }else{
@@ -17,10 +21,18 @@ const Data  = ({arrayofGroups,others=false})=>{
             <div className='flex flex-column w-full'>
               <div className='flex flex-wrap justify-center m-3 md:m-10 w-full'>
                 {
-                  Files.array.map(
+                  Files.array.slice(0,19).map(
                     (file) => <Filecard name={file.at(0)} key={file.at(1)} path={file.at(4)} extension={file.at(2)} />
                   )
                 }
+                {
+                showMore &&(
+                  Files.array.slice(20).map(
+                    (file) => <Filecard name={file.at(0)} key={file.at(1)} path={file.at(4)} extension={file.at(2)} />
+                  )
+                )}
+                <button className="hover-underline-animation h-fit max-h-fit self-center" onClick={()=>{setShowMore(!showMore)}}>{showMore? (<>Show Less</>):(<>Show More</>)}</button>
+
               </div>
             </div>
             </div>

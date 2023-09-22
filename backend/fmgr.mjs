@@ -104,7 +104,7 @@ async function chaosofFiles() {
 
     arrayGroup.forEach(
         function (array) {
-            fs.writeFile(__dirname + "Arrays/" + array.name + ".json", '{"name":"'+array.name+'",'+'"array":' + JSON.stringify(array.array)+"}", function (err) {
+            fs.writeFile(__dirname+"/Arrays/" + array.name + ".json", '{"name":"'+array.name+'",'+'"array":' + JSON.stringify(array.array)+"}", function (err) {
                 if (err) {
                     return console.log(err);
                 }
@@ -123,7 +123,7 @@ async function waitUntil() {
             chaosofFiles();
             console.log(i)
             i = i + 1;
-        }, 60000);
+        }, 30000);
     });
 }
 waitUntil()

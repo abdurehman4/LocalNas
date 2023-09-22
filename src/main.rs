@@ -19,7 +19,7 @@ struct Configuration {
 fn backend_api()-> JoinHandle<()>{
     let api_thread = thread::spawn(||{
         let command1 =Command::new("yarn")
-        .args(["--cwd","/usr/share/localnas/backend/","dev"])
+        .args(["--cwd","./backend/","dev"])
         // .arg("")
         .stdout(Stdio::piped())
         .spawn()
@@ -37,7 +37,7 @@ fn backend_api()-> JoinHandle<()>{
 fn website()-> JoinHandle<()>{
     let website_thread = thread::spawn(||{
         let command2 =Command::new("sudo")
-        .args(["yarn","--cwd","/usr/share/localnas/localnas","start"])
+        .args(["yarn","--cwd","./localnas/","start"])
         // .arg("")
         .stdout(Stdio::piped())
         .spawn()
@@ -53,9 +53,10 @@ fn website()-> JoinHandle<()>{
 }
 
 fn fmgr(path: String)-> JoinHandle<()>{
+    println!("fmgr");
     let fmgr_thread: JoinHandle<()> = thread::spawn(move||{
         let command3 =Command::new("node")
-        .args(["/usr/share/localnas/backend/fmgr.mjs",&path])
+        .args(["./backend/fmgr.mjs",&path])
         // .arg("")
         .stdout(Stdio::piped())
         .spawn()
@@ -71,9 +72,9 @@ fn fmgr(path: String)-> JoinHandle<()>{
 }
 
 fn run_server(path: String){
+    let web_handle = fmgr(path);
     backend_api();
-    fmgr(path);
-    let web_handle = website();
+    website();
     web_handle.join().unwrap();
 }
 
@@ -88,7 +89,7 @@ fn read_json_typed(raw_json: &str) -> Configuration {
     
 }
 fn main() {
-    let path = Path::new("./.server_conf.json");
+    let path = Path::new(".server_conf.json");
     let mut dir_path = String::new();
 
 

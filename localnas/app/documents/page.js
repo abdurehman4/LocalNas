@@ -1,9 +1,9 @@
-import Layout from "@/components/Layout"
-import PageHeading from "@/components/pageHeading"
-import Data from "@/components/DataGroups"
-import getData from "@/app/getData"
+import PageHeading from "@/app/components/pageHeading"
+import Data from "@/app/components/DataGroups"
+import getData from "@/app/components/getData"
 
-export async function getServerSideProps() {
+
+async function Documents() {
   const bookFiles =await getData('http://192.168.10.22:5000/bookFiles')
 const officeFiles =await getData('http://192.168.10.22:5000/officeFiles')
   // ... fetch other data ...
@@ -12,20 +12,10 @@ const officeFiles =await getData('http://192.168.10.22:5000/officeFiles')
     { name: "Books", array: bookFiles },
     { name: "Office Files", array: officeFiles }
   ]
-
-  return {
-    props: {
-      groups
-    }
-  };
-}
-
-function Documents({groups}) {
   return (
-    <Layout>
+        <div>
         <PageHeading heading="Documents"/>
-        <Data arrayofGroups={groups}/>
-    </Layout>
+        <Data arrayofGroups={groups}/></div>
   )
 }
 

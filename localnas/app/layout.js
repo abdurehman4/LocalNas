@@ -1,8 +1,8 @@
 // 'use client'
 import '@styles/globals.css'
-import { figtree } from '@/components/fonts';
+import { figtree } from '@/app/components/fonts';
 import Head from 'next/head';
-// import Header from '@/components/Header';
+import Header from '@app/components/Header';
 
 export const metadata = {
   title: 'LocalNAS',
@@ -16,9 +16,10 @@ function RootLayout ({children}){
       <Head>
         <title>LocalNAS</title>
       </Head>
-      <main className={figtree.className}>
+      <body className={figtree.className}>
+      <Header/>
       <div>{children}</div>
-      </main>
+      </body>
     </html>
   )
 }

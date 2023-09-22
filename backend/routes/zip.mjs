@@ -1,9 +1,13 @@
 import express from "express";
 import * as fs from 'fs'
 export const zip = express.Router();
+import * as url from 'url';
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
 
 zip.get("/",(req,res)=>{
-    const data = JSON.parse(fs.readFileSync('/home/abdurehman/LocalNas/backend/Arrays/zipFiles.json','utf-8'))
+    const data = JSON.parse(fs.readFileSync(__dirname+'../'+'Arrays/zipFiles.json','utf-8'))
     res.json(data)
 }
 )

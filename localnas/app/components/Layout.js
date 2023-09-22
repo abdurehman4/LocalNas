@@ -10,8 +10,8 @@ export default function Layout({ children }) {
         <Head>
         <title>LocalNAS</title>
       </Head>
-        <Header/>
       <div>
+        <Header/>
         {children}</div>
       </div>
     )
