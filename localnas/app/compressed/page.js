@@ -1,4 +1,3 @@
-import Layout from "@/app/components/Layout"
 import PageHeading from "@/app/components/pageHeading"
 import Data from "@/app/components/DataGroups"
 import getData from "@/app/components/getData"
@@ -15,10 +14,10 @@ const compressedarray =await getData('http://192.168.10.22:5000/compressedFiles'
     { name: "Others", array: compressedarray }
   ]
   return (
-    <Layout>
+    <div>
         <PageHeading heading="Archives"/>
         <Data arrayofGroups={groups}/>
-    </Layout>
+    </div>
   )
 }
 

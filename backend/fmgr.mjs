@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import {fileTypeFromFile} from 'file-type';
 import * as path from 'path';
 import * as url from 'url';
-// import * as process from 'process'
 
 var compressedFiles = [];
 var imageFiles = [];
@@ -19,23 +18,16 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 async function chaosofFiles() {
     const getAllFiles = function (dirPath, arrayOfFiles) {
         const files = fs.readdirSync(dirPath)
-        // console.log(files);
-        // exit();
-
-
-        // arrayOfFiles = arrayOfFiles || []
-
         files.forEach(function (file) {
-            // console.log(file.charAt(0))
             try{
             if ((fs.statSync(dirPath + "/" + file).isDirectory())&&!(file.charAt(0)==".")) {
-                // console.log("Inside of If statement")
+                console.log("Inside of If statement")
                 arrayOfFiles = getAllFiles(dirPath + "/" + file, arrayOfFiles)
             
             } else if (!(file.charAt(0)==".")) {
                 arrayOfFiles.push(path.join(dirPath, "/", file))}
         }catch(err){
-            // console.log(err)
+            console.log(file+": is having some permission problems!")
         }
         })
         return arrayOfFiles
@@ -43,7 +35,7 @@ async function chaosofFiles() {
 
 
     const myFiles = [];
-    getAllFiles(process.argv.at(2), myFiles)
+    await getAllFiles(process.argv.at(2), myFiles)
 
     const filesextensions = await Promise.all(myFiles.map(async (file,i) => {
         const type = await fileTypeFromFile(file);
@@ -100,7 +92,7 @@ async function chaosofFiles() {
         { name: "bookFiles", array: bookFiles },
         { name: "others", array: others },
     ]
-
+    console.log("Scanned!")
 
     arrayGroup.forEach(
         function (array) {
@@ -111,8 +103,8 @@ async function chaosofFiles() {
             });
         }
     )
+    console.log("Saved")
 }
-
 chaosofFiles()
 
 async function waitUntil() {
