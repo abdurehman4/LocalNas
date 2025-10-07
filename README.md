@@ -1,4 +1,4 @@
-# LocalNAS
+# LocalNAS (A Dropped Project)
 
 ## Introduction
 
